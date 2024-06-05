@@ -27,7 +27,7 @@
     ></script>
     <title>회원가입</title>
   </head>
-  <body>
+  <body onload="session_join_get();">
     <section class="vh-100 gradient-custom">
       <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
@@ -169,7 +169,7 @@
                       onclick="join();"
                       type="submit"
                       id="join_btn"
-                      href="../join/index_join.html"
+                      onclick="location.href='../join/index_join.html'"
                     >
                       회원가입
                     </button>

@@ -65,7 +65,7 @@ function displayStatus() {
 
 // 버튼 클릭 이벤트 리스너 추가
 document.getElementById('login_btn').addEventListener('click', login_count);
-document.getElementById('logout_btn').addEventListener('click', logout_count);
+// document.getElementById('logout_btn').addEventListener('click', logout_count);
 
 // 초기 상태를 표시
 displayStatus();

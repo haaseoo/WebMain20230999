@@ -32,6 +32,13 @@ class SignUp {
   get contactInfo() {
     return `${this.emailAddress} ${this.phoneNumber} ${this.random}`;
   }
+
+  set contactInfo(contactInfo) {
+    const [emailAddress, phoneNumber, random] = contactInfo.split(' ');
+    this.emailAddress = emailAddress;
+    this.phoneNumber = phoneNumber;
+    this.random = random;
+  }
 }
 
 function join() {
@@ -44,7 +51,7 @@ function join() {
   let p_number = document.querySelector('#phoneNumber');
   let class_check = document.querySelector('.select form-control-lg');
 
-  form.action = '../index_join.html';
+  form.action = '../login/index_join.html';
   form.method = 'get';
 
   if (
@@ -56,7 +63,7 @@ function join() {
   ) {
     alert('회원가입 폼에 모든 정보를 입력해주세요. (성별, 분반 제외)');
   } else {
-    session_join_set();
+    session_join_set(); //회원가입용 세션 생성
     form.submit();
   }
 }
@@ -64,4 +71,13 @@ function join() {
 function joinUser() {
   // 회원가입 로직 구현
   console.log('회원가입 되었습니다!');
+  const user = session_join_get();
+  if (user) {
+    console.log('복호화된 객체 내용:', user);
+  } else {
+    console.log('사용자 정보가 없습니다.');
+  }
 }
+
+console.log(sessionStorage.getItem('Session_Storage_object'));
+console.log(sessionStorage.getItem('Session_Storage_encrypted'));

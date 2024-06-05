@@ -38,14 +38,35 @@ function session_set() {
   }
 }
 
-function session_join_get() {
-  // 예제로 사용할 객체
-  const userInfo = {
-    userId: 'user123',
-    userName: 'haseo',
-    isLoggedIn: true,
-  };
+function session_join_set(user) {
+  sessionStorage.setItem('user', JSON.stringify(user));
+}
 
-  // 콘솔에 사용자 정보 출력
-  console.log('User Info:', userInfo);
+function session_join_get() {
+  const user = sessionStorage.getItem('user');
+  return user ? JSON.parse(user) : null;
+}
+
+function session_get() {
+  if (sessionStorage) {
+    return sessionStorage.getItem('Session_Storage_encrypted');
+  } else {
+    alert('세션 스토리지 지원 x');
+  }
+}
+
+function session_check() {
+  if (sessionStorage.getItem('Session_Storage_id')) {
+    alert('이미 로그인 되었습니다.');
+    location.href = '../login/index_login.html';
+  }
+}
+
+function session_del() {
+  if (sessionStorage) {
+    sessionStorage.removeItem('Session_Storage_test');
+    alert('로그아웃 버튼 클릭 확인: 세션 스토리지를 삭제합니다.');
+  } else {
+    alert('세션 스토리지 지원 x');
+  }
 }

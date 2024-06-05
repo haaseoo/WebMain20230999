@@ -23,16 +23,25 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
+    <script src="/js/session.js"></script>
+    <script src="/js/reallogin.js"></script>
+    <script src="/js/reallogin2.js"></script>
     <title>LOL</title>
   </head>
-  <body>
-    <br />
-    <div class="mx-auto" style="width: 500px">
-      <a href="index.html"
-        ><img src="/image/google.png" alt="google" style="width: 600px"
-      /></a>
-    </div>
+  <body onload="session_join_get()">
+    <script>
+      window.onload = function () {
+        const user = session_join_get();
+        if (user) {
+          console.log('복호화된 객체 내용: ', user);
+        } else {
+          console.log('사용자 정보가 없습니다.');
+        }
+      };
+    </script>
+    <a href="index.html"
+      ><img src="image/main.png" width="1200" height="768" class="img-fluid"
+    /></a>
     <br />
     <div class="text-center p-3">
       <h3 class="text-secondary">

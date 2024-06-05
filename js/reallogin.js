@@ -108,27 +108,6 @@ function logout_count() {
 }
 document.getElementById('logout_btn').addEventListener('click', logout_count);
 
-function setCookie(name, value, days) {
-  var expires = '';
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = '; expores=' + date.toUTCString();
-  }
-  document.cookie = name + '=' + (value || '') + expires + '; path=/';
-}
-
-function getCookie(name) {
-  var nameEQ = name + '=';
-  var ca = document.cookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) === '') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-}
-
 // function session_set() {
 //   //세션저장
 //   let session_id = document.querySelector('#typeEmailX');
@@ -156,70 +135,11 @@ function getCookie(name) {
 //   }
 // }
 
-function session_get() {
-  if (sessionStorage) {
-    return sessionStorage.getItem('Session_Storage_encrypted');
-  } else {
-    alert('세션 스토리지 지원 x');
-  }
-}
-
-function session_check() {
-  if (sessionStorage.getItem('Session_Storage_id')) {
-    alert('이미 로그인 되었습니다.');
-    location.href = '../login/index_login.html';
-  }
-}
-
-function session_del() {
-  if (sessionStorage) {
-    sessionStorage.removeItem('Session_Storage_test');
-    alert('로그아웃 버튼 클릭 확인: 세션 스토리지를 삭제합니다.');
-  } else {
-    alert('세션 스토리지 지원 x');
-  }
-}
-
 function logout() {
   session_del();
   // document.cookie = 'id=; Max-Age=0;psth=/';
   // document.cookie = 'login_cnt=; Max-Age=0;psth=/';
   location.href = '../index.html';
-}
-
-function encodeByAES256(key, data) {
-  const cipher = CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(key), {
-    iv: CryptoJS.enc.Utf8.parse(''),
-    padding: CryptoJS.pad.Pkcs7,
-    mode: CryptoJS.mode.CBC,
-  });
-  return cipher.toString();
-}
-
-function decodeByAES256(key, data) {
-  const cipher = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(key), {
-    iv: CryptoJS.enc.Utf8.parse(''),
-    padding: CryptoJS.pad.Pkcs7,
-    mode: CryptoJS.mode.CBC,
-  });
-  return cipher.toString(CryptoJS.enc.Utf8);
-}
-
-function encrypt_text(password) {
-  const k = 'key';
-  const rk = k.padEnd(32, '');
-  const b = password;
-  const eb = this.encodeByAES256(rk, b);
-  return eb;
-  console.log(eb);
-}
-
-function decrypt_text() {
-  const k = 'key';
-  const rk = k.padEnd(32, '');
-  const eb = session_get();
-  const b = this.decodeByAES256(rk, eb);
-  console.log(b);
 }
 
 function init_logined() {
