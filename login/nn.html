@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+    <script src="/js/reallogin.js" defer></script>
+    <script src="/js/reallogin2.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Automatic logout function
+      function autoLogout() {
+        alert('You have been automatically logged out after 5 minutes.');
+        sessionStorage.clear(); // Delete session
+        deleteAllCookies(); // Delete all cookies
+        window.location.href = '../index.html'; // Redirect to main page
+      }
+
+      // Function called when the logout button is clicked
+      function manualLogout() {
+        alert('You have been logged out.');
+        sessionStorage.clear(); // Delete session
+        deleteAllCookies(); // Delete all cookies
+        window.location.href = '../index.html'; // Redirect to main page
+      }
+
+      // Function to delete all cookies
+      function deleteAllCookies() {
+        const cookies = document.cookie.split(';');
+
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf('=');
+          const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        }
+      }
+
+      // Check session on page load
+      window.onload = function () {
+        const loginTime = sessionStorage.getItem('loginTime');
+        if (loginTime) {
+          const currentTime = new Date().getTime();
+          const elapsedTime = currentTime - loginTime;
+
+          if (elapsedTime >= 5 * 60 * 1000) {
+            autoLogout();
+          } else {
+            // Set timer for the remaining time
+            setTimeout(autoLogout, 5 * 60 * 1000 - elapsedTime);
+          }
+        }
+      };
+    </script>
+  </head>
+
+  <body style="background-color: black">
+    <h1 style="color: white; font-weight: bold; text-align: center">
+      로그아웃 메인화면
+    </h1>
+    <div>
+      <br /><br />
+      <a
+        href="../index.html"
+        class="btn btn-outline-success"
+        id="logout_btn"
+        onclick="manualLogout()"
+      >
+        로그아웃
+      </a>
+    </div>
+    <h3
+      style="
+        display: flex;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+      "
+    >
+      <br />
+      <br />
+      라이엇 게임 회사 정보 2024년 @월 작성
+    </h3>
+  </body>
+</html>
