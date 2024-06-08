@@ -23,10 +23,10 @@ function session_set() {
   console.log(newSignUp.fullName);
   console.log(newSignUp.contactInfo);
 
-  // const obj = {
-  //   id: id.value,
-  //   otp: random,
-  // };
+  const obj = {
+    id: id.value,
+    otp: random,
+  };
 
   if (sessionStorage) {
     const objString = JSON.stringify(newSignUp);
@@ -38,9 +38,36 @@ function session_set() {
   }
 }
 
-function session_join_set(user) {
-  sessionStorage.setItem('user', JSON.stringify(user));
+function session_set() {
+  //세션저장
+  let session_id = document.querySelector('#typeEmailX');
+  let session_pass = document.querySelector('#typePasswordX');
+  if (sessionStorage) {
+    let en_text = encrypt_text(session_pass.value);
+    // sessionStorage.setItem('Session_Storage_test', session_id.value);
+    sessionStorage.setItem('Session_Storage_id', session_id.value);
+    sessionStorage.setItem('Session_Storage_pass', en_text);
+    const now = new Date().getTime();
+    sessionStorage.setItem('login_time', now.toString());
+    setTimeout(() => {
+      logout();
+    }, 300000);
+  } else {
+    alert('로컬 스토리지 지원 x');
+  }
 }
+
+function session_get() {
+  if (sessionStorage.getItem('Session_Storage_id')) {
+    return sessionStorage.getItem('Session_Storage_test');
+  } else {
+    alert('세션 스토리지 지원 x');
+  }
+}
+
+// function session_join_set(user) {
+//   sessionStorage.setItem('user', JSON.stringify(user));
+// }
 
 function session_join_get() {
   const user = sessionStorage.getItem('user');
