@@ -94,3 +94,9 @@
 2. login.html 의 아이디 기억 체크박스 check.css로 꾸미기
 3. 카카오톡 채널 추가 버튼 구현 : 클릭시 카카오톡 채널 추가 화면으로 연동
    <img width="553" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/339b8600-11f7-4b0e-9112-57a450e36542">
+
+
+
+WEB_MAIN_20230999 에 오류가 생겨 다시 webmain20230999 폴더를 생성하였습니다.
+첫 커밋은 첫 수업날 정상 작동되었습니다!
+<img width="658" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/b3e09780-9293-4813-8e9d-570c281877fb">
