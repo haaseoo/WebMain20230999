@@ -91,8 +91,8 @@
 1. index.html 의 검색하기, 로그인, 회원가입 버튼 css 수정
    <img width="130" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/3d601bc3-2df2-44c2-9eb2-74ba474d91a6">
   
-2. login.html 의 아이디 기억 체크박스 check.css로 꾸미기
-3. 카카오톡 채널 추가 버튼 구현 : 클릭시 카카오톡 채널 추가 화면으로 연동
+2. login.html 의 아이디 기억 체크박스 check.css로 꾸미기 (login.html)
+3. 카카오톡 채널 추가 버튼 구현 : 클릭시 카카오톡 채널 추가 화면으로 연동 (profile.html)
    <img width="553" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/339b8600-11f7-4b0e-9112-57a450e36542">
 
 
