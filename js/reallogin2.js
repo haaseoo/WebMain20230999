@@ -125,3 +125,34 @@ function deleteAllCookies() {
     document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
   }
 }
+
+let loginRestricted = false; // 로그인 제한 상태
+
+function login_failed() {
+  let login_fail_cnt = parseInt(getCookie('login_fail_cnt')) || 0;
+  login_fail_cnt++;
+  setCookie('login_fail_cnt', login_fail_cnt, 1); // 1일 저장
+
+  if (login_fail_cnt >= 3) {
+    alert('로그인 시도 횟수가 3회 이상이므로 로그인이 제한됩니다.');
+    loginRestricted = true; // 로그인 제한 상태 설정
+
+    // 4분 후에 로그인 제한을 해제하는 타이머 설정
+    setTimeout(() => {
+      loginRestricted = false; // 로그인 제한 상태 해제
+      setCookie('login_fail_cnt', 0, 0); // 로그인 실패 횟수 초기화
+      alert('로그인 제한이 해제되었습니다.');
+    }, 240000); // 4분(4 * 60 * 1000 밀리초)
+    return false;
+  }
+
+  // 실패 횟수와 로그인 제한 상태를 화면에 출력하는 코드 추가
+  alert('로그인 실패 횟수: ' + login_fail_cnt);
+}
+
+const check_input = () => {
+  if (loginRestricted) {
+    alert('로그인이 제한되어 있습니다. 잠시 후 다시 시도해주세요.');
+    return false;
+  }
+};
