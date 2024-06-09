@@ -87,7 +87,7 @@
   - 카카오맵 키워드 검색 및 목록 출력 화면 구현 (map 폴더 추가 생성함 - map.js/map.css)
   - 위도, 경도 수정
 
-### 개인 추가 구현
+### * 개인 추가 구현 *
 1. index.html 의 검색하기, 로그인, 회원가입 버튼 css 수정
    <img width="130" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/3d601bc3-2df2-44c2-9eb2-74ba474d91a6">
   
