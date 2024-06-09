@@ -6,6 +6,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     center: new kakao.maps.LatLng(37.51757384320381, 126.97064636283544),
     level: 3,
   };
+//위도 경도 수정
 
 var map = new kakao.maps.Map(mapContainer, mapOption);
 var mapTypeControl = new kakao.maps.MapTypeControl();

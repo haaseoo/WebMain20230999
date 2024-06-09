@@ -35,12 +35,12 @@ function show_clock() {
   setTimeout(show_clock, 1000);
 }
 
-// function over(obj) {
-//   obj.src = 'image/logo.png';
-// }
-// function out(obj) {
-//   obj.src = 'image/strawberry.png';
-// }
+function over(obj) {
+  obj.src = 'image/logo.png';
+}
+function out(obj) {
+  obj.src = 'image/strawberry.png';
+}
 
 const over = (obj) => {
   obj.src = 'image/logo.png';

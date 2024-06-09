@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="http://127.0.0.1:5500" />
-    <title>LOL</title>
+    <title>LOL - logout</title>
     <meta name="안하서" content="20230999" />
     <meta name="keywords" content="computer" />
     <link
@@ -148,18 +148,32 @@
                 aria-label="Search"
               />
               <button
-                class="btn btn-outline-success"
                 id="search_button_msg"
                 type="submit"
+                style="
+                  border-radius: 6px;
+                  background: #ededed;
+                  box-shadow: inset 5px 5px 10px #dadada,
+                    inset -5px -5px 10px #ffffff;
+                  color: black;
+                "
               >
                 검색하기
               </button>
-              <a
-                href="login/login.html"
-                class="btn btn-outline-success"
+              <button
+                onclick="location.href='../login/login.html'"
                 id="login_btn"
-                >로그인</a
+                style="
+                  border-radius: 6px;
+                  background: #ededed;
+                  box-shadow: inset 5px 5px 10px #dadada,
+                    inset -5px -5px 10px #ffffff;
+                  color: black;
+                "
               >
+                로그인
+              </button>
+              <!-- 개인 추가 구현: 버튼 css 꾸미기 -->
             </form>
           </div>
         </nav>

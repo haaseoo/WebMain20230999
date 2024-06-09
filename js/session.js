@@ -65,10 +65,7 @@ function session_get() {
   }
 }
 
-// function session_join_set(user) {
-//   sessionStorage.setItem('user', JSON.stringify(user));
-// }
-
+// 13&14주차 응용문제: session_join_get 함수 구현
 function session_join_get() {
   const user = sessionStorage.getItem('user');
   return user ? JSON.parse(user) : null;
@@ -97,3 +94,55 @@ function session_del() {
     alert('세션 스토리지 지원 x');
   }
 }
+// 12주차 응용문제: 세션 스토리지 로그아웃 구현
+
+// 초기 상태를 표시
+displayStatus();
+
+// 자동 로그아웃 함수
+function autoLogout() {
+  alert('5분이 경과하여 자동 로그아웃됩니다!');
+  sessionStorage.clear(); // 세션 삭제
+  deleteAllCookies(); // 쿠키 삭제
+  window.location.href = '../index.html'; // 메인 페이지로 이동
+}
+
+// 로그아웃 버튼 클릭 시 호출되는 함수
+function manualLogout() {
+  alert('로그아웃되었습니다.');
+  sessionStorage.clear(); // 세션 삭제
+  deleteAllCookies(); // 쿠키 삭제
+  window.location.href = '../index.html'; // 메인 페이지로 이동
+}
+
+// 페이지 로드 시 세션 확인
+window.onload = function () {
+  const loginTime = sessionStorage.getItem('loginTime');
+  if (loginTime) {
+    const currentTime = new Date().getTime();
+    const elapsedTime = currentTime - loginTime;
+
+    if (elapsedTime >= 5 * 60 * 1000) {
+      autoLogout();
+    } else {
+      // 남은 시간만큼 타이머 설정
+      setTimeout(autoLogout, 5 * 60 * 1000 - elapsedTime);
+    }
+  }
+};
+
+// 페이지 로드 시 세션 확인
+window.onload = function () {
+  const loginTime = sessionStorage.getItem('loginTime');
+  if (loginTime) {
+    const currentTime = new Date().getTime();
+    const elapsedTime = currentTime - loginTime;
+
+    if (elapsedTime >= 5 * 60 * 1000) {
+      autoLogout();
+    } else {
+      // 남은 시간만큼 타이머 설정
+      setTimeout(autoLogout, 5 * 60 * 1000 - elapsedTime);
+    }
+  }
+};

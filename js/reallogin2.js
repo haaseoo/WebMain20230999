@@ -1,67 +1,67 @@
-// 10주...........
+// 10주.
 // 쿠키를 설정하는 함수
-function setCookie(name, value, days) {
-  var expires = '';
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = '; expires=' + date.toUTCString();
-  }
-  document.cookie = name + '=' + (value || '') + expires + '; path=/';
-}
+// function setCookie(name, value, days) {
+//   var expires = '';
+//   if (days) {
+//     var date = new Date();
+//     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+//     expires = '; expires=' + date.toUTCString();
+//   }
+//   document.cookie = name + '=' + (value || '') + expires + '; path=/';
+// }
 
-// 쿠키를 가져오는 함수
-function getCookie(name) {
-  var nameEQ = name + '=';
-  var ca = document.cookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-}
+// // 쿠키를 가져오는 함수
+// function getCookie(name) {
+//   var nameEQ = name + '=';
+//   var ca = document.cookie.split(';');
+//   for (var i = 0; i < ca.length; i++) {
+//     var c = ca[i];
+//     while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+//     if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+//   }
+//   return null;
+// }
 
 // 로그인 실패 횟수를 증가시키는 함수
-function login_failed() {
-  var count = parseInt(getCookie('login_failed_cnt')) || 0;
-  count++;
-  setCookie('login_failed_cnt', count, 30);
-  displayStatus();
-}
+// function login_failed() {
+//   var count = parseInt(getCookie('login_failed_cnt')) || 0;
+//   count++;
+//   setCookie('login_failed_cnt', count, 30);
+//   displayStatus();
+// }
 
 // 로그인 카운트를 증가시키는 함수
-function login_count() {
-  var failedCount = parseInt(getCookie('login_failed_cnt')) || 0;
-  if (failedCount >= 3) {
-    alert('로그인이 제한되었습니다.');
-    return;
-  }
+// function login_count() {
+//   var failedCount = parseInt(getCookie('login_failed_cnt')) || 0;
+//   if (failedCount >= 3) {
+//     alert('로그인이 제한되었습니다.');
+//     return;
+//   }
 
-  var count = parseInt(getCookie('login_cnt')) || 0;
-  count++;
-  setCookie('login_cnt', count, 30);
-  console.log('Login count: ' + count); // 디버깅을 위해 콘솔에 출력
-  displayStatus();
-}
+//   var count = parseInt(getCookie('login_cnt')) || 0;
+//   count++;
+//   setCookie('login_cnt', count, 30);
+//   console.log('Login count: ' + count); // 디버깅을 위해 콘솔에 출력
+//   displayStatus();
+// }
 
-// 로그아웃 카운트를 증가시키는 함수
-function logout_count() {
-  var count = parseInt(getCookie('logout_cnt')) || 0;
-  count++;
-  setCookie('logout_cnt', count, 30);
-  console.log('Logout count: ' + count); // 디버깅을 위해 콘솔에 출력
-}
+// // 로그아웃 카운트를 증가시키는 함수
+// function logout_count() {
+//   var count = parseInt(getCookie('logout_cnt')) || 0;
+//   count++;
+//   setCookie('logout_cnt', count, 30);
+//   console.log('Logout count: ' + count); // 디버깅을 위해 콘솔에 출력
+// }
 
-// 실패횟수와 로그인 제한 상태를 화면에 출력하는 함수
-function displayStatus() {
-  var failedCount = parseInt(getCookie('login_failed_cnt')) || 0;
-  var status =
-    failedCount >= 3 ? '로그인이 제한되었습니다.' : '로그인 가능합니다.';
-  document.getElementById('loginFailCount').innerText =
-    '로그인 실패 횟수: ' + failedCount;
-  document.getElementById('loginStatus').innerText = status;
-}
+// // 실패횟수와 로그인 제한 상태를 화면에 출력하는 함수
+// function displayStatus() {
+//   var failedCount = parseInt(getCookie('login_failed_cnt')) || 0;
+//   var status =
+//     failedCount >= 3 ? '로그인이 제한되었습니다.' : '로그인 가능합니다.';
+//   document.getElementById('loginFailCount').innerText =
+//     '로그인 실패 횟수: ' + failedCount;
+//   document.getElementById('loginStatus').innerText = status;
+// }
 
 // 버튼 클릭 이벤트 리스너 추가
 document.getElementById('login_btn').addEventListener('click', login_count);
@@ -149,10 +149,3 @@ function login_failed() {
   // 실패 횟수와 로그인 제한 상태를 화면에 출력하는 코드 추가
   alert('로그인 실패 횟수: ' + login_fail_cnt);
 }
-
-const check_input = () => {
-  if (loginRestricted) {
-    alert('로그인이 제한되어 있습니다. 잠시 후 다시 시도해주세요.');
-    return false;
-  }
-};

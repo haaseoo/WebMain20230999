@@ -1,3 +1,5 @@
+// 10주: 쿠키 설하고 갖고오는 함수 추가
+
 function setCookie(name, value, days) {
   var expires = '';
   if (days) {
@@ -17,4 +19,15 @@ function getCookie(name) {
     if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
   }
   return null;
+}
+
+function deleteAllCookies() {
+  const cookies = document.cookie.split(';');
+
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf('=');
+    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  }
 }

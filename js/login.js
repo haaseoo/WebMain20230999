@@ -1,75 +1,3 @@
-// // const check_input = () => {
-// //   const loginForm = document.getElementById('login_form');
-// //   const loginBtn = document.getElementById('login_btn');
-// //   const emailInput = document.getElementById('typeEmailX');
-// //   const passwordInput = document.getElementById('typePasswordX');
-
-// //   const c = '이메일, 비밀번호를 체크합니다';
-// //   alert(c);
-
-// //   const emailValue = emailInput.value.trim();
-// //   const passwordValue = passwordInput.value.trim();
-
-// //   if (emailValue === '') {
-// //     alert('이메일을 입력하세요!');
-// //     return false;
-// //   }
-
-// //   if (passwordValue === '') {
-// //     alert('비밀번호를 입력하세요!');
-// //     return false;
-// //   }
-
-// //   console.log('이메일: ', emailValue);
-// //   console.log('비밀번호: ', passwordValue);
-
-// //   loginForm.submit();
-// // };
-// // document.getElementById('login_btn').addEventListener('click', check_input);
-
-// if (emailValue.length < 5) {
-//   alert('아이디는 최소 5글자 이상으로 입력해주세요.');
-//   return false;
-// }
-
-// if (passwordValue.length < 12) {
-//   alert('비밀번호는 최소 12글자 이상으로 입력해주세요.');
-//   return false;
-// }
-
-// const hasSpecialChar =
-//   passwordValue.match(/[!,@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/) !== null;
-// if (!hasSpecialChar) {
-//   alert('비밀번호는 특수문자를 1개 이상 포함해야 합니다.');
-//   return false;
-// }
-
-// const hasUpperCase = passwordValue.match(/[A-Z]+/) !== null;
-// const hasLowerCase = passwordValue.match(/[a-z]+/) !== null;
-// if (!hasUpperCase || !hasLowerCase) {
-//   alert('비밀번호는 대소문자를 1개 이상 포함해야 합니다.');
-//   return false;
-// }
-
-// // const check_xss = (input) => {
-// //   const DOMPurify = window.DOMPurify;
-// //   const sanitizedInput = DOMPurify.sanitize(input);
-// //   if (sanitizedInput !== input) {
-// //     alert('XSS 공격 가능성이 있는 입력값을 발견했습니다.');
-// //     return false;
-// //   }
-// //   return sanitizedInput;
-// // };
-
-// // const sanitizedPassword = check_xss(passwordValue);
-// // const sanitizeEmail = check_xss(emailValue);
-// // if (!sanitizeEmail) {
-// //   return false;
-// // }
-// // if (!sanitizedPassword) {
-// //   return false;
-// // }
-
 let loginRestricted = false; // 로그인 제한 상태
 
 function login_failed() {
@@ -124,6 +52,29 @@ const check_input = () => {
     return false;
   }
 
+  if (emailValue.length > 15) {
+    alert('이메일은 최대 15글자 이하로 입력해야 합니다.');
+    login_failed();
+    return false;
+  }
+  // 8주 연습문제: 이메일 15글자 이하 수정
+
+  const repeatedPattern = /(\w)\1{2,}/;
+  if (repeatedPattern.test(emailValue)) {
+    alert('아이디에는 동일한 글자가 3번 이상 연속으로 올 수 없습니다.');
+    login_failed();
+    return false;
+  }
+  // 8주 연습문제: 3글자 이상 반복 입력 금지
+
+  const repeatedNumberPattern = /(\d{2,})/;
+  if (repeatedNumberPattern.test(emailValue)) {
+    alert('아이디에는 연속되는 숫자가 2개 이상 반복될 수 없습니다.');
+    login_failed();
+    return false;
+  }
+  // 8주 연습문제: 연속되는 숫자 2개 이상 반복 금지
+
   if (passwordValue.length < 12) {
     alert('비밀번호는 반드시 12글자 이상 입력해야 합니다.');
     login_failed();
@@ -161,6 +112,7 @@ const check_input = () => {
   session_set(); // 세션 생성
   loginForm.submit();
 };
+document.getElementById('login_btn').addEventListener('click', check_input);
 
 const init = () => {
   const emailInput = document.getElementById('typeEmailX');
@@ -173,7 +125,30 @@ const init = () => {
   session_check(); // 세션 유무 검사
 };
 
-document.getElementById('login_btn').addEventListener('click', check_input);
+// 로그인 카운트를 증가시키는 함수
+// 10주 응용문제: 로그인 횟수 쿠키 저장
+function login_count() {
+  var failedCount = parseInt(getCookie('login_failed_cnt')) || 0;
+  if (failedCount >= 3) {
+    alert('로그인이 제한되었습니다.');
+    return;
+  }
+
+  var count = parseInt(getCookie('login_cnt')) || 0;
+  count++;
+  setCookie('login_cnt', count, 30);
+  console.log('Login count: ' + count); // 디버깅을 위해 콘솔에 출력
+  displayStatus();
+}
+
+// 로그아웃 카운트를 증가시키는 함수
+// 10주 응용문제: 로그아웃 횟수 쿠키 저장
+function logout_count() {
+  var count = parseInt(getCookie('logout_cnt')) || 0;
+  count++;
+  setCookie('logout_cnt', count, 30);
+  console.log('Logout count: ' + count); // 디버깅을 위해 콘솔에 출력
+}
 
 function addJavascript(jsname) {
   // 자바스크립트 외부 연동
@@ -186,3 +161,13 @@ function addJavascript(jsname) {
 addJavascript('/js/security.js'); // 암복호화 함수
 addJavascript('/js/session.js'); // 세션 함수
 addJavascript('/js/cookie.js'); // 쿠키 함수
+
+function session_del() {
+  if (sessionStorage) {
+    sessionStorage.removeItem('Session_Storage_test');
+    alert('로그아웃 버튼 클릭 확인: 세션 스토리지를 삭제합니다.');
+  } else {
+    alert('세션 스토리지 지원 x');
+  }
+}
+// 12주차 응용문제: 세션 스토리지 로그아웃 구현

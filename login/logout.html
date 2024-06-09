@@ -8,8 +8,7 @@
     <meta name="안하서" content="20230999" />
     <meta name="keywords" content="computer" />
     <link rel="stylesheet" href="/login/logout.css" />
-    <!-- <script src="/js/login2.js"></script> -->
-    <!-- <script src="/js/login.js"></script> -->
+    <script src="/js/login.js"></script>
     <script src="/js/reallogin.js" defer></script>
     <script src="/js/reallogin2.js" defer></script>
     <link
@@ -39,7 +38,6 @@
       >
         로그아웃
       </a>
-      <button onclick="manualLogout()">Logout</button>
     </div>
     <h3
       style="
@@ -54,6 +52,7 @@
       라이엇 게임 회사 정보 2024년 @월 작성
     </h3>
     <script>
+      // 12주차 응용문제
       function session_del() {
         if (sessionStorage) {
           sessionStorage.removeItem('Session_Storage_test');

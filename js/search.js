@@ -5,11 +5,15 @@ const search_message = () => {
 
 document
   .getElementById('search_button_msg')
+  // * 4주 연습문제 : 클릭 이벤트 식별자 수정
   .addEventListener('click', search_message);
 // function search_message() {
-//   // alert('검색을 수행합니다');
+//   alert('검색을 수행합니다');
 //   let message = '검색을 수행합니다';
 //   alert(message);
+// * 4주 연습문제 : 함수 중첩 > 가장 내부의 함수가 우선순위를 갖음
+// * 4주 연습문제 : let 변수 추가
+
 // }
 
 function googleSearch() {
@@ -28,6 +32,7 @@ function googleSearch() {
       return false;
     }
   }
+  // * 5주 연습문제 : if문, 반복문, 배열 이용해 공백&비속어 검사
 
   // 검색어로 설정
   const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(

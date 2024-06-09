@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="http://127.0.0.1:5500" />
-    <title>LOL login</title>
+    <title>LOL - login</title>
     <meta name="안하서" content="20230999" />
     <meta name="keywords" content="computer" />
     <script src="js/search.js" defer></script>
@@ -41,6 +41,7 @@
   </head>
 
   <body style="background-color: black" onload="session_join_get();">
+    <!-- 13&14주차 응용문제: session_join_get() 호출 -->
     <!-- *** 부트스트랩 네비게이션 바 *** -->
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container-fluid">
@@ -150,18 +151,44 @@
                 aria-label="Search"
               />
               <button
-                class="btn btn-outline-success"
                 id="search_button_msg"
                 type="submit"
+                style="
+                  border-radius: 6px;
+                  background: #ededed;
+                  box-shadow: inset 5px 5px 10px #dadada,
+                    inset -5px -5px 10px #ffffff;
+                  color: black;
+                "
               >
                 검색하기
               </button>
-              <a href="login/login.html" class="btn btn-outline-success"
-                >로그인</a
+              <button
+                href="#"
+                style="
+                  border-radius: 6px;
+                  background: #ededed;
+                  box-shadow: inset 5px 5px 10px #dadada,
+                    inset -5px -5px 10px #ffffff;
+                  color: black;
+                "
               >
-              <a href="/login/index_logout.html" class="btn btn-outline-success"
-                >로그아웃</a
+                로그인
+              </button>
+              <button
+                onclick="location.href='index.html'"
+                style="
+                  border-radius: 6px;
+                  background: #ededed;
+                  box-shadow: inset 5px 5px 10px #dadada,
+                    inset -5px -5px 10px #ffffff;
+                  color: black;
+                "
               >
+                로그아웃
+              </button>
+              <!-- 개인 추가 구현: 버튼 css 꾸미기 -->
+              <!-- 7주차 추가구현: 로그아웃 버튼 > 로그아웃 페이지 -->
             </form>
           </div>
         </nav>
