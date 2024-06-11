@@ -2,17 +2,17 @@
   - vs code 환경 설정, 깃허브 설정
 
 
-## 3주차 수업 개발 완료
+## * 3주차 수업 개발 완료 *
   - 메타데이터와 하이퍼링크 : 메인 이미지와 텍스트 메뉴에 a 태그 추가
   - 표 : lol 캐릭터 표 구현
   - 네비게이션 바 (부트스트랩)
   - 반응형 메인이미지
 
-### * 3주차 응용 문제 & 추가 구현 완료 *
+### 3주차 응용 문제 & 추가 구현 완료
   - 표에 이미지 추가, 특정 문자에 롤 사이트 링크 달고 하나로 병합하기
   - 네비게이션 바에 하이퍼링크 추가, 색상 변경
  
-## 4주차 수업 개발 완료
+## * 4주차 수업 개발 완료 *
   - 네비게이션 바 좌측 로고 추가, 반응형으로 수정
   - 자바스크립트 이용해 네비게이션 바 검색창 구현 (마우스 이벤트)
     
@@ -88,15 +88,22 @@
   - 위도, 경도 수정
 
 ## * 개인 추가 구현 *
-1. index.html 의 검색하기, 로그인, 회원가입 버튼 css 수정
-   <img width="130" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/3d601bc3-2df2-44c2-9eb2-74ba474d91a6">
+1. 검색하기, 로그인, 로그아웃, 회원가입 버튼 css 수정
+
+   <img width="150" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/3d601bc3-2df2-44c2-9eb2-74ba474d91a6">
+   <img width="150" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/7cb2d735-2ca7-497f-80d9-d593125a83f9">
+
   
 2. login.html 의 아이디 기억 체크박스 check.css로 꾸미기 (login.html)
-3. 카카오톡 채널 추가 버튼 구현 : 클릭시 카카오톡 채널 추가 화면으로 연동 (profile.html)
-   <img width="553" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/339b8600-11f7-4b0e-9112-57a450e36542">
 
+   <img width="200" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/c911f6bb-b5e9-4551-9302-a083b2b4c69c">
+
+4. 카카오톡 채널 추가 버튼 구현 : 클릭시 카카오톡 채널 추가 화면으로 연동 (profile.html)
+
+   <img width="500" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/339b8600-11f7-4b0e-9112-57a450e36542">
 
 
 WEB_MAIN_20230999 에 오류가 생겨 다시 webmain20230999 폴더를 생성하였습니다.
 첫 커밋은 첫 수업날 정상 작동되었습니다!
-<img width="658" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/b3e09780-9293-4813-8e9d-570c281877fb">
+  
+  <img width="500" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/b3e09780-9293-4813-8e9d-570c281877fb">
