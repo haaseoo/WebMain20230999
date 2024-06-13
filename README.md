@@ -102,6 +102,9 @@
 
    <img width="500" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/339b8600-11f7-4b0e-9112-57a450e36542">
 
+5. 푸터 구현 : 메일, 인스타그램, 페이스북, 트위터 연동 (index.html, index.css)
+
+   <img width="1000" alt="image" src="https://github.com/haaseoo/WebMain20230999/assets/155533087/befd5e38-4dd4-4c85-b5f2-c5f6784f9847">
 
 WEB_MAIN_20230999 에 오류가 생겨 다시 webmain20230999 폴더를 생성하였습니다.
 첫 커밋은 첫 수업날 정상 작동되었습니다!
